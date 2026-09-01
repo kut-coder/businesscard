@@ -214,28 +214,12 @@ function getChildProfile() {
 
 function renderStart() {
   const screen = document.createElement('div');
-  screen.className = 'screen active';
-
-  const heroes = [
-    { id: 'carrot', side: 'left' },
-    { id: 'pepper', side: 'left' },
-    { id: 'broccoli', side: 'right' },
-    { id: 'orange', side: 'right' },
-  ];
-
-  const leftHeroes = heroes.filter((h) => h.side === 'left')
-    .map((h) => `<img class="peek-hero" data-cutout src="${getCharacterImage(h.id, 'happy')}" alt="" aria-hidden="true">`)
-    .join('');
-
-  const rightHeroes = heroes.filter((h) => h.side === 'right')
-    .map((h) => `<img class="peek-hero" data-cutout src="${getCharacterImage(h.id, 'happy')}" alt="" aria-hidden="true">`)
-    .join('');
+  screen.className = 'screen screen--start active';
 
   screen.innerHTML = `
-    <div class="start-heroes">
-      <div class="start-heroes-side start-heroes-side--left">${leftHeroes}</div>
-      <img class="big-plate-img" src="assets/characters/plate-start.png" alt="" aria-hidden="true">
-      <div class="start-heroes-side start-heroes-side--right">${rightHeroes}</div>
+    <div class="start-heroes start-heroes--duo">
+      <img class="peek-hero peek-hero--static" data-cutout src="${getCharacterImage('pepper', 'happy')}" alt="" aria-hidden="true">
+      <img class="peek-hero peek-hero--static" data-cutout src="${getCharacterImage('orange', 'happy')}" alt="" aria-hidden="true">
     </div>
     <h1 class="screen-title screen-title--welcome"><span class="screen-title-line">Добро пожаловать в Витаминки!<img class="title-vitaminka" data-cutout src="${VITAMINKA_IMAGE}" alt="" aria-hidden="true"></span></h1>
     <p class="screen-subtitle">Узнай, где прячутся витамины, собирай Витаминки и познакомься с нашими героями.</p>
@@ -243,14 +227,13 @@ function renderStart() {
       <p class="demo-note-label">Демонстрация для специалистов</p>
       <p class="demo-note-text">Познавательная игра для сайта или канала: ребёнок увлекается и зовёт родителя «набрать витаминок», а в финале нутрициолог мягко предлагает разобрать реальную тарелку и приглашает на консультацию.</p>
     </aside>
-    <p class="screen-text" style="font-weight:700;margin-top:16px">Кто сегодня играет?</p>
     <div class="btn-group">
       <button type="button" class="btn btn-primary start-child-btn">
         <span class="btn-icons" aria-hidden="true">
           <img class="btn-icon" data-cutout src="${ICON_CHILD}" alt="">
           <img class="btn-icon" data-cutout src="${ICON_GIRL}" alt="">
         </span>
-        Я ребёнок
+        Играть
       </button>
     </div>
   `;

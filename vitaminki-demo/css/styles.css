@@ -274,6 +274,72 @@ body {
 .start-heroes-side--right .peek-hero:nth-child(1) { animation-delay: 1s; }
 .start-heroes-side--right .peek-hero:nth-child(2) { animation-delay: 1.5s; margin-bottom: -12px; }
 
+.start-heroes--duo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  min-height: 88px;
+  margin-bottom: 10px;
+  padding: 0 4px;
+}
+
+.start-heroes--duo .peek-hero {
+  width: clamp(68px, 20vw, 96px);
+  height: clamp(68px, 20vw, 96px);
+  flex: 0 0 auto;
+}
+
+.peek-hero--static {
+  animation: none !important;
+}
+
+.screen--start.active {
+  overflow-y: hidden;
+  justify-content: flex-start;
+}
+
+.screen--start .screen-title {
+  font-size: clamp(1.15rem, 4.2vw, 1.55rem);
+  margin-bottom: 6px;
+}
+
+.screen--start .screen-subtitle {
+  font-size: 0.84rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.screen--start .demo-note {
+  margin-bottom: 10px;
+  padding: 10px 12px 11px;
+}
+
+.screen--start .demo-note-label {
+  font-size: 0.66rem;
+  margin-bottom: 4px;
+}
+
+.screen--start .demo-note-text {
+  font-size: 0.78rem;
+  line-height: 1.38;
+}
+
+.screen--start .title-vitaminka {
+  width: clamp(52px, 14vw, 72px);
+  height: clamp(52px, 14vw, 72px);
+  margin-bottom: -6px;
+}
+
+.screen--start .btn-group {
+  margin-top: 2px;
+}
+
+.screen--start .btn-primary {
+  padding: 12px 24px;
+  font-size: 0.95rem;
+}
+
 @keyframes sway {
   0%, 100% { transform: rotate(-3deg) translateY(0); }
   50% { transform: rotate(3deg) translateY(-6px); }
@@ -1262,6 +1328,29 @@ body {
 
   .product-image {
     max-height: clamp(72px, 20vw, 100px);
+  }
+
+  .start-heroes--duo {
+    min-height: 72px;
+    margin-bottom: 8px;
+  }
+
+  .start-heroes--duo .peek-hero {
+    width: clamp(60px, 18vw, 84px);
+    height: clamp(60px, 18vw, 84px);
+  }
+
+  .screen--start .screen-title {
+    font-size: 1.2rem;
+  }
+
+  .screen--start .screen-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .screen--start .demo-note-text {
+    font-size: 0.74rem;
   }
 
   .start-heroes {
