@@ -1090,9 +1090,13 @@ body {
 
 /* ── Нутрициолог ── */
 
-.nutritionist-screen {
-  justify-content: center;
-  gap: 8px;
+.nutritionist-screen.active {
+  overflow: hidden;
+  justify-content: space-between;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
 }
 
 .nutritionist-stage {
@@ -1103,6 +1107,14 @@ body {
   min-height: 210px;
   margin: 8px 0 12px;
   padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.nutritionist-stage--solo {
+  min-height: 0;
+  margin: 0;
+  padding: 4px 0 0;
+  align-items: center;
 }
 
 .nutritionist-peek {
@@ -1173,9 +1185,9 @@ body {
 }
 
 .nutritionist-avatar--featured {
-  width: clamp(150px, 38vw, 188px);
-  height: clamp(150px, 38vw, 188px);
-  border-width: 4px;
+  width: clamp(120px, 32vw, 150px);
+  height: clamp(120px, 32vw, 150px);
+  border-width: 3px;
 }
 
 .nutritionist-image {
@@ -1187,7 +1199,12 @@ body {
 
 .nutritionist-card {
   position: relative;
-  margin-bottom: 16px;
+  margin-bottom: 0;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   animation: fact-pop-in 0.45s cubic-bezier(0.34, 1.2, 0.45, 1);
 }
 
@@ -1207,46 +1224,24 @@ body {
   background: linear-gradient(165deg, #fffef9 0%, #fff8ee 45%, #f3fbef 100%);
   border: 3px solid #ffe4c8;
   border-radius: 24px;
-  padding: 20px 18px 16px;
+  padding: 16px 16px 14px;
   box-shadow: 0 10px 28px rgba(255, 140, 66, 0.12), var(--plate-shadow);
 }
 
 .nutritionist-speech {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
   background: var(--white);
   border: 2px dashed #ffd4a8;
   border-radius: 18px;
-  padding: 16px;
-  margin-bottom: 14px;
-}
-
-.nutritionist-speech-icon {
-  font-size: 1.3rem;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.nutritionist-quote {
-  margin: 0;
-  text-align: left;
-}
-
-.nutritionist-quote-lead {
-  font-weight: 800;
-  font-size: 1rem;
-  line-height: 1.45;
-  color: var(--text);
-  margin-bottom: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
 }
 
 .nutritionist-quote-body {
-  font-size: 0.94rem;
-  line-height: 1.5;
+  font-size: 0.86rem;
+  line-height: 1.45;
   color: var(--text-soft);
   margin: 0;
+  text-align: center;
 }
 
 .nutritionist-chips {
@@ -1270,11 +1265,16 @@ body {
 }
 
 .nutritionist-actions {
-  margin-top: auto;
+  margin-top: 0;
+  padding-top: 4px;
+  flex-shrink: 0;
 }
 
 .nutritionist-actions .btn {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 12px 22px;
 }
 
 .contact-soon {
@@ -1345,12 +1345,8 @@ body {
     padding: 16px 14px 14px;
   }
 
-  .nutritionist-stage {
-    min-height: 180px;
-  }
-
-  .nutritionist-peek-hero {
-    width: clamp(44px, 14vw, 60px);
+  .nutritionist-stage--solo {
+    min-height: 0;
   }
 }
 
@@ -1540,6 +1536,45 @@ body.embed .start-heroes.start-heroes--duo .peek-hero {
 
 body.embed .start-content {
   gap: 12px;
+}
+
+body.embed .screen.nutritionist-screen.active {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  gap: 8px;
+}
+
+body.embed .nutritionist-stage--solo .nutritionist-avatar--featured {
+  width: clamp(108px, 30vw, 132px);
+  height: clamp(108px, 30vw, 132px);
+}
+
+body.embed .nutritionist-card-content {
+  padding: 12px 14px 12px;
+}
+
+body.embed .nutritionist-quote-body {
+  font-size: 0.8rem;
+  line-height: 1.42;
+}
+
+body.embed .nutritionist-chips {
+  gap: 10px;
+}
+
+body.embed .nutritionist-chip {
+  width: 36px;
+  height: 36px;
+}
+
+body.embed .nutritionist-chip:nth-child(4) {
+  width: 32px;
+  height: 32px;
+}
+
+body.embed .nutritionist-actions {
+  padding-top: 2px;
 }
 
 @media (min-width: 521px) {

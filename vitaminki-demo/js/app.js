@@ -354,41 +354,6 @@ function renderNutritionistAvatar({ featured = false } = {}) {
   return `<div class="nutritionist-avatar${featuredClass}" aria-hidden="true"><img class="nutritionist-image" data-cutout src="${NUTRITIONIST_IMAGE}" alt=""></div>`;
 }
 
-function renderNutritionistPeekHeroes() {
-  const heroes = [
-    { id: 'carrot', side: 'left', delay: 0 },
-    { id: 'broccoli', side: 'left', delay: 1 },
-    { id: 'pepper', side: 'right', delay: 2 },
-    { id: 'orange', side: 'right', delay: 3 },
-  ];
-
-  const sides = ['left', 'right'].map((side) => {
-    const items = heroes
-      .filter((hero) => hero.side === side)
-      .map((hero) => `
-        <img
-          class="nutritionist-peek-hero"
-          data-cutout
-          src="${getCharacterImage(hero.id, 'happy')}"
-          alt=""
-          style="animation-delay:${hero.delay * 0.35}s"
-        >
-      `)
-      .join('');
-
-    return `<div class="nutritionist-peek nutritionist-peek--${side}">${items}</div>`;
-  }).join('');
-
-  return `
-    <div class="nutritionist-stage">
-      ${sides}
-      <div class="nutritionist-hero-wrap">
-        ${renderNutritionistAvatar({ featured: true })}
-      </div>
-    </div>
-  `;
-}
-
 function renderPlateTransition() {
   const screen = document.createElement('div');
   screen.className = 'screen active';
@@ -413,16 +378,14 @@ function renderNutritionist() {
   const screen = document.createElement('div');
   screen.className = 'screen active nutritionist-screen';
   screen.innerHTML = `
-    ${renderNutritionistPeekHeroes()}
+    <div class="nutritionist-stage nutritionist-stage--solo">
+      ${renderNutritionistAvatar({ featured: true })}
+    </div>
     <div class="nutritionist-card">
       <div class="nutritionist-card-plate" aria-hidden="true"></div>
       <div class="nutritionist-card-content">
         <div class="nutritionist-speech">
-          <span class="nutritionist-speech-icon" aria-hidden="true">💬</span>
-          <div class="nutritionist-quote">
-            <p class="nutritionist-quote-lead">«Хотите посмотреть на свой настоящий рацион?</p>
-            <p class="nutritionist-quote-body">Я могу помочь разобрать его вместе с вами: посмотреть на разнообразие питания, привычки и продукты, которые регулярно появляются на вашей тарелке».</p>
-          </div>
+          <p class="nutritionist-quote-body">Я могу помочь разобрать ваш рацион вместе с вами: посмотреть на разнообразие питания, привычки и продукты, которые регулярно появляются на вашей тарелке.</p>
         </div>
         <div class="nutritionist-chips" aria-hidden="true">
           <img class="nutritionist-chip" data-cutout src="${getCharacterImage('broccoli', 'happy')}" alt="">
@@ -433,7 +396,7 @@ function renderNutritionist() {
       </div>
     </div>
     <div class="btn-group nutritionist-actions">
-      <button type="button" class="btn btn-primary cta-btn">Разобрать мой рацион →</button>
+      <button type="button" class="btn btn-primary cta-btn">Разобрать мой рацион</button>
     </div>
   `;
 
