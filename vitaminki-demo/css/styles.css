@@ -293,8 +293,8 @@ body {
 
 .start-heroes--duo .peek-hero,
 .start-heroes.start-heroes--duo .peek-hero {
-  width: clamp(56px, 18vw, 80px);
-  height: clamp(56px, 18vw, 80px);
+  width: clamp(64px, 20vw, 88px);
+  height: clamp(64px, 20vw, 88px);
   flex: 0 0 auto;
 }
 
@@ -304,53 +304,77 @@ body {
 
 .screen.screen--start.active {
   overflow: hidden;
-  justify-content: flex-start;
-  flex: 0 1 auto;
+  justify-content: space-between;
+  flex: 1;
   min-height: 0;
+  height: 100%;
+  gap: 10px;
+}
+
+.start-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-height: 0;
+  width: 100%;
+}
+
+.start-heroes.start-heroes--duo {
+  flex-shrink: 0;
+  margin-bottom: 0;
+  padding-top: 2px;
+}
+
+.start-btn-group {
+  flex-shrink: 0;
+  margin-top: 0;
+  padding-top: 0;
+  width: 100%;
 }
 
 .screen--start .screen-title {
-  font-size: clamp(1.05rem, 3.8vw, 1.45rem);
-  margin-bottom: 4px;
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  margin-bottom: 0;
 }
 
 .screen--start .screen-subtitle {
-  font-size: 0.8rem;
-  line-height: 1.35;
-  margin-bottom: 6px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin-bottom: 0;
+  max-width: 340px;
 }
 
 .screen--start .demo-note {
-  margin-bottom: 6px;
-  padding: 8px 10px 9px;
+  margin-bottom: 0;
+  padding: 10px 12px 11px;
+  max-width: 360px;
+  width: 100%;
 }
 
 .screen--start .demo-note-label {
-  font-size: 0.62rem;
-  margin-bottom: 3px;
+  font-size: 0.64rem;
+  margin-bottom: 4px;
 }
 
 .screen--start .demo-note-text {
-  font-size: 0.74rem;
-  line-height: 1.34;
+  font-size: 0.76rem;
+  line-height: 1.38;
 }
 
 .screen--start .title-vitaminka {
-  width: clamp(44px, 12vw, 60px);
-  height: clamp(44px, 12vw, 60px);
+  width: clamp(48px, 13vw, 64px);
+  height: clamp(48px, 13vw, 64px);
   margin-bottom: -4px;
 }
 
-.screen--start .btn-group {
-  margin-top: 0;
-  padding-top: 4px;
-}
-
 .screen--start .btn-primary {
-  padding: 10px 20px;
-  min-height: 42px;
-  font-size: 0.92rem;
-  margin: 2px auto 0;
+  padding: 12px 24px;
+  min-height: 44px;
+  font-size: 0.95rem;
+  margin: 0 auto;
 }
 
 @keyframes sway {
@@ -1349,8 +1373,12 @@ body {
   }
 
   .start-heroes.start-heroes--duo .peek-hero {
-    width: clamp(52px, 16vw, 72px);
-    height: clamp(52px, 16vw, 72px);
+    width: clamp(58px, 18vw, 76px);
+    height: clamp(58px, 18vw, 76px);
+  }
+
+  .start-content {
+    gap: 8px;
   }
 
   .screen--start .screen-title {
@@ -1358,12 +1386,11 @@ body {
   }
 
   .screen--start .screen-subtitle {
-    font-size: 0.76rem;
-    margin-bottom: 5px;
+    font-size: 0.78rem;
   }
 
   .screen--start .demo-note-text {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
   }
 
   .start-heroes:not(.start-heroes--duo) {
@@ -1486,21 +1513,38 @@ body.embed #app {
   min-height: 0;
   max-height: 100%;
   margin: 0;
-  padding: 2px 8px 4px;
+  padding: 10px 10px 14px;
   box-shadow: none;
   border-radius: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+body.embed #app > .screen {
+  flex: 1;
+  min-height: 0;
 }
 
 body.embed .screen.screen--start.active {
   height: 100%;
   max-height: 100%;
   overflow: hidden;
+  gap: 12px;
+}
+
+body.embed .start-heroes.start-heroes--duo .peek-hero {
+  width: clamp(68px, 22vw, 92px);
+  height: clamp(68px, 22vw, 92px);
+}
+
+body.embed .start-content {
+  gap: 12px;
 }
 
 @media (min-width: 521px) {
   body.embed #app {
-    padding: 2px 8px 4px;
+    padding: 10px 10px 14px;
     box-shadow: none;
     margin: 0;
     min-height: 0;

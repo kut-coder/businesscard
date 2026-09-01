@@ -221,13 +221,15 @@ function renderStart() {
       <img class="peek-hero peek-hero--static" data-cutout src="${getCharacterImage('pepper', 'happy')}" alt="" aria-hidden="true">
       <img class="peek-hero peek-hero--static" data-cutout src="${getCharacterImage('orange', 'happy')}" alt="" aria-hidden="true">
     </div>
-    <h1 class="screen-title screen-title--welcome"><span class="screen-title-line">Добро пожаловать в Витаминки!<img class="title-vitaminka" data-cutout src="${VITAMINKA_IMAGE}" alt="" aria-hidden="true"></span></h1>
-    <p class="screen-subtitle">Узнай, где прячутся витамины, собирай Витаминки и познакомься с нашими героями.</p>
-    <aside class="demo-note" role="note">
-      <p class="demo-note-label">Демонстрация для специалистов</p>
-      <p class="demo-note-text">Познавательная игра для сайта или канала: ребёнок увлекается и зовёт родителя «набрать витаминок», а в финале нутрициолог мягко предлагает разобрать реальную тарелку и приглашает на консультацию.</p>
-    </aside>
-    <div class="btn-group">
+    <div class="start-content">
+      <h1 class="screen-title screen-title--welcome"><span class="screen-title-line">Добро пожаловать в Витаминки!<img class="title-vitaminka" data-cutout src="${VITAMINKA_IMAGE}" alt="" aria-hidden="true"></span></h1>
+      <p class="screen-subtitle">Узнай, где прячутся витамины, собирай Витаминки и познакомься с нашими героями.</p>
+      <aside class="demo-note" role="note">
+        <p class="demo-note-label">Демонстрация для специалистов</p>
+        <p class="demo-note-text">Познавательная игра для сайта или канала: ребёнок увлекается и зовёт родителя «набрать витаминок», а в финале нутрициолог мягко предлагает разобрать реальную тарелку и приглашает на консультацию.</p>
+      </aside>
+    </div>
+    <div class="btn-group start-btn-group">
       <button type="button" class="btn btn-primary start-child-btn">
         <span class="btn-icons" aria-hidden="true">
           <img class="btn-icon" data-cutout src="${ICON_CHILD}" alt="">
