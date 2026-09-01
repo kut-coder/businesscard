@@ -5,46 +5,6 @@ nav?.querySelectorAll("a").forEach((a) => {
   a.addEventListener("click", () => nav.classList.remove("open"));
 });
 
-const quizTexts = {
-  coffee: {
-    title: "Кофе держит вас в режиме «срочность»",
-    text: "Это не про силу воли. Нервная система просит опору. На консультации разбираем, чем заменить гонку — без запрета любимой чашки.",
-  },
-  sweet: {
-    title: "Сладкое утром — часто про перепад, не про характер",
-    text: "Тело просит быстрый сигнал. Вместе ищем завтрак, после которого не хочется договариваться с собой до обеда.",
-  },
-  skip: {
-    title: "Пропуск завтрака — тоже стратегия",
-    text: "Иногда так спокойнее. Вопрос в том, чем платит вечер. На сессии смотрим, где можно вставить опору без «надо есть с 7:00».",
-  },
-  bowl: {
-    title: "Автопилот тоже можно сделать добрее",
-    text: "Тарелка есть, а энергии нет — частый сюжет. Разберём состав и ритм, не ломая привычку целиком.",
-  },
-};
-
-document.querySelectorAll("[data-next='quiz']").forEach((btn) => {
-  btn.addEventListener("click", () => showQuiz(1));
-});
-document.querySelectorAll(".choice").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const pick = btn.dataset.pick;
-    const data = quizTexts[pick];
-    document.getElementById("quizTitle").textContent = data.title;
-    document.getElementById("quizText").textContent = data.text;
-    showQuiz(2);
-  });
-});
-document.querySelector("[data-book]")?.addEventListener("click", (e) => {
-  e.target.textContent = "Заявка отправлена специалисту";
-});
-function showQuiz(step) {
-  document.querySelectorAll("[data-app='quiz']").forEach((el) => {
-    el.classList.toggle("active", Number(el.dataset.step) === step);
-  });
-}
-
 const dots = document.getElementById("habitDots");
 if (dots) {
   for (let i = 1; i <= 21; i += 1) {

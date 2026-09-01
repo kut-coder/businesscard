@@ -44,6 +44,9 @@
 │   ├── guide-cover.jpg         # обложка гайда
 │   ├── checklist-print.jpg     # чек-лист
 │   └── recipe-bowl.jpg         # карточка рецепта
+│
+│   Картинки сжаты для веба (JPEG progressive, quality ~78, ширина до 900–1600px).
+│   Суммарный вес assets ≈ 1.3 MB (раньше было ≈ 19 MB).
 └── PROJECT.md                  # этот файл контекста
 ```
 
