@@ -226,7 +226,8 @@ function renderStart() {
       <p class="screen-subtitle">Узнай, где прячутся витамины, собирай Витаминки и познакомься с нашими героями.</p>
       <aside class="demo-note" role="note">
         <p class="demo-note-label">Демонстрация для специалистов</p>
-        <p class="demo-note-text">Познавательная игра для сайта или канала: ребёнок увлекается и зовёт родителя «набрать витаминок», а в финале нутрициолог мягко предлагает разобрать реальную тарелку и приглашает на консультацию.</p>
+        <p class="demo-note-sub">Сокращенная версия</p>
+        <p class="demo-note-text">Познавательная игра для сайта или канала: ребёнок увлекается и зовёт родителя «набрать витаминок», а в финале специалист мягко предлагает разобрать реальную тарелку и приглашает на консультацию.</p>
       </aside>
     </div>
     <div class="btn-group start-btn-group">
@@ -385,7 +386,7 @@ function renderNutritionist() {
       <div class="nutritionist-card-plate" aria-hidden="true"></div>
       <div class="nutritionist-card-content">
         <div class="nutritionist-speech">
-          <p class="nutritionist-quote-body">Я могу помочь разобрать ваш рацион вместе с вами: посмотреть на разнообразие питания, привычки и продукты, которые регулярно появляются на вашей тарелке.</p>
+          <p class="nutritionist-quote-body">Я помогаю разобрать ваш рацион вместе с вами: посмотреть на разнообразие питания, привычки и продукты, которые регулярно появляются на вашей тарелке.</p>
         </div>
         <div class="nutritionist-chips" aria-hidden="true">
           <img class="nutritionist-chip" data-cutout src="${getCharacterImage('broccoli', 'happy')}" alt="">
@@ -405,13 +406,22 @@ function renderNutritionist() {
   applyCutoutToImages(screen);
 }
 
+function goToStart() {
+  navHistory = [];
+  resetGame('child');
+  currentScreenId = 'start';
+  renderStart();
+}
+
 function renderContactSoon() {
   const screen = document.createElement('div');
-  screen.className = 'screen active';
+  screen.className = 'screen active contact-soon-screen';
   screen.innerHTML = `
     <div class="contact-soon">В полной версии здесь открывается запись на консультацию или чат с вами в мессенджере.</div>
+    <button type="button" class="btn-link contact-restart">Вернуться в начало</button>
   `;
 
+  screen.querySelector('.contact-restart').addEventListener('click', goToStart);
   showScreen(screen);
 }
 

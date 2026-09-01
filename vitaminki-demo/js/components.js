@@ -63,6 +63,7 @@ export function createQuestionScreen({
   vitamins,
   showHint,
   showWrong,
+  wrongCount = 0,
   selectedIds = [],
   factVisible = false,
   onSelect,
@@ -70,6 +71,10 @@ export function createQuestionScreen({
 }) {
   const container = document.createElement('div');
   container.className = 'screen active question-screen';
+
+  if (question.vitamin === 'B12') {
+    container.classList.add('question-screen--b12');
+  }
 
   const progress = ((questionIndex + (factVisible ? 1 : 0)) / totalQuestions) * 100;
 
@@ -101,13 +106,13 @@ export function createQuestionScreen({
   if (showWrong) {
     const wrong = document.createElement('div');
     wrong.className = 'wrong-message';
-    wrong.textContent = WRONG_MESSAGE;
+    wrong.innerHTML = WRONG_MESSAGE;
     messagesArea.appendChild(wrong);
   }
 
   if (showHint && question.hint) {
     const hint = document.createElement('div');
-    hint.className = 'hint-box';
+    hint.className = 'hint-box' + (wrongCount >= 2 ? ' hint-box--compact' : '');
     hint.textContent = question.hint;
     messagesArea.appendChild(hint);
   }
@@ -150,9 +155,9 @@ export function createQuestionScreen({
 
     let html = `
       <div class="fact-panel-plate" aria-hidden="true"></div>
-      <div class="fact-panel-content">
-        <div class="fact-speech">
-          <span class="fact-speech-icon" aria-hidden="true">💬</span>
+      <div class="fact-panel-content${question.vitamin === 'B12' ? ' fact-panel-content--compact' : ''}">
+        <div class="fact-speech${question.vitamin === 'B12' ? ' fact-speech--compact' : ''}">
+          ${question.vitamin === 'B12' ? '' : '<span class="fact-speech-icon" aria-hidden="true">💬</span>'}
           <p class="fact-reaction">${question.reaction}</p>
         </div>
     `;

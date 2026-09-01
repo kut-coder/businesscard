@@ -65,4 +65,4 @@ export const CHILD_PROFILES = [
 
 export const ADULT_PROFILES = [];
 
-export const WRONG_MESSAGE = 'Ой, не здесь! 👀 Попробуй ещё раз.';
+export const WRONG_MESSAGE = 'Ой, не здесь! 👀<br>Попробуй еще раз';
