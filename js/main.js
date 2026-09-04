@@ -511,66 +511,13 @@ toTop?.addEventListener("click", () => {
 window.addEventListener("scroll", toggleToTop, { passive: true });
 toggleToTop();
 
-document.getElementById("contactForm")?.addEventListener("submit", async (e) => {
+document.getElementById("contactForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
   const form = e.target;
   const toast = document.getElementById("toast");
-  const submitBtn = form.querySelector('[type="submit"]');
   const data = Object.fromEntries(new FormData(form).entries());
-  const defaultToast = "Спасибо. Ваш запрос отправлен специалисту.<br />В ближайшее время Ксения с вами свяжется.";
-
-  submitBtn.disabled = true;
-  try {
-    const res = await fetch("https://formsubmit.co/ajax/k.utorina@yandex.ru", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        ...data,
-        _subject: "Заявка с сайта-визитки",
-        _template: "table",
-      }),
-    });
-    if (!res.ok) throw new Error("send failed");
-    localStorage.setItem("nutricode-lead", JSON.stringify(data));
-    toast.innerHTML = defaultToast;
-    toast.style.display = "block";
-    form.reset();
-  } catch {
-    toast.textContent = "Не удалось отправить автоматически. Напишите напрямую: k.utorina@yandex.ru";
-    toast.style.display = "block";
-  } finally {
-    submitBtn.disabled = false;
-  }
+  localStorage.setItem("nutricode-lead", JSON.stringify(data));
+  toast.innerHTML = "Спасибо. Ваш запрос отправлен специалисту.<br />В ближайшее время Ксения с вами свяжется.";
+  toast.style.display = "block";
+  form.reset();
 });
-
-/* Переключатель формы «Связаться»:
-   data-contact-mode="native"  — текущий вид (FormSubmit, пока включён этот режим)
-   data-contact-mode="yandex"  — Яндекс Форма; ссылку вставьте в data-yandex-form-src у iframe
-   Копия native-формы: archive/contact-form-native.html */
-(() => {
-  const section = document.getElementById("contact");
-  if (!section) return;
-
-  const mode = section.dataset.contactMode === "yandex" ? "yandex" : "native";
-  const nativePanel = section.querySelector(".contact-panel--native");
-  const yandexPanel = section.querySelector(".contact-panel--yandex");
-  const frame = yandexPanel?.querySelector(".yandex-form-frame");
-  const src = (frame?.dataset.yandexFormSrc || frame?.getAttribute("src") || "").trim();
-
-  if (mode === "yandex") {
-    nativePanel?.setAttribute("hidden", "");
-    yandexPanel?.removeAttribute("hidden");
-    if (src) {
-      frame.src = src;
-      yandexPanel.classList.remove("is-pending");
-    } else {
-      yandexPanel.classList.add("is-pending");
-    }
-  } else {
-    yandexPanel?.setAttribute("hidden", "");
-    nativePanel?.removeAttribute("hidden");
-  }
-})();
