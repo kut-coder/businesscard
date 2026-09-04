@@ -189,17 +189,14 @@ document.querySelectorAll("#goalChips .chip").forEach((chip) => {
 });
 
 document.getElementById("buildDay")?.addEventListener("click", () => {
-  const limit = document.getElementById("goalLimit")?.value.trim();
   const board = document.getElementById("mealBoard");
   const meals = mealPlans[selectedGoal];
-  board.innerHTML =
-    (limit ? `<div class="meal-card" style="grid-column:1/-1"><b>Учтено</b><p>${limit}</p></div>` : "") +
-    meals
-      .map(
-        (m) =>
-          `<div class="meal-card"><b>${m.title}</b><ul>${m.items.map((i) => `<li>${i}</li>`).join("")}</ul></div>`
-      )
-      .join("");
+  board.innerHTML = meals
+    .map(
+      (m) =>
+        `<div class="meal-card"><b>${m.title}</b><ul>${m.items.map((i) => `<li>${i}</li>`).join("")}</ul></div>`
+    )
+    .join("");
   board.hidden = false;
   document.getElementById("planHint").hidden = false;
 });
@@ -354,7 +351,7 @@ const chatFlow = {
     buttons: [{ label: "Связаться с Ольгой", next: "olga" }],
   },
   olga: {
-    bot: "Передала Ольге. <span class=\"hint\">В рабочей версии сообщение уйдёт ей в чат, а не останется в боте.</span>",
+    bot: "Передала ваш запрос Ольге, в ближайшее время она с вами свяжется.<br><br><span class=\"hint\">В рабочей версии сообщение уходит к вам в мессенджер.</span>",
     buttons: [{ label: "Сначала", next: "start" }],
   },
 };

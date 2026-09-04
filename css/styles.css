@@ -570,22 +570,31 @@ input, textarea, select { max-width: 100%; }
 }
 
 .chat-demo { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 22px; align-items: start; }
-.fake-site { background: #fff; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); min-height: 540px; position: relative; }
+.fake-site {
+  background: #fff;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 .fake-site header { padding: 16px 20px; display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); font-family: var(--font-serif); }
-.fake-body { padding: 28px 22px; }
+.fake-body { padding: 22px 22px 8px; }
+.fake-body .muted { margin-top: 8px; max-width: 100%; }
 .widget {
-  position: absolute;
-  right: 16px;
-  bottom: 16px;
-  width: 280px;
+  position: relative;
+  width: calc(100% - 32px);
+  margin: 12px 16px 16px;
   background: #fff;
   border-radius: 18px;
   box-shadow: var(--shadow);
   overflow: hidden;
   border: 1px solid var(--line);
+  flex-shrink: 0;
 }
 .widget-head { background: var(--moss); color: #fff; padding: 10px 12px; font-size: 0.9rem; }
-.widget-body { height: 250px; overflow: auto; padding: 10px; background: #faf6f0; }
+.widget-body { height: 220px; overflow: auto; padding: 10px; background: #faf6f0; }
 .msg { max-width: 90%; padding: 8px 10px; border-radius: 12px; margin-bottom: 8px; font-size: 0.85rem; }
 .msg.bot { background: #fff; }
 .msg.user { background: #e7d3c4; margin-left: auto; }
@@ -742,15 +751,12 @@ input, textarea, select { max-width: 100%; }
   .school-weeks li { grid-template-columns: 24px 1fr; }
   .school-weeks em { grid-column: 2; }
   .fake-site { min-height: 0; }
-  .fake-body { padding: 20px 16px 280px; }
+  .fake-body { padding: 18px 16px 6px; }
   .widget {
-    position: relative;
-    right: auto;
-    bottom: auto;
     width: calc(100% - 24px);
-    margin: 0 12px 16px;
+    margin: 10px 12px 14px;
   }
-  .widget-body { height: 220px; }
+  .widget-body { height: 200px; }
   .principle { padding: 28px 20px; border-radius: 24px; }
   .site-footer {
     flex-direction: column;
