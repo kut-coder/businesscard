@@ -1,8 +1,15 @@
 const menuBtn = document.getElementById("menuBtn");
 const nav = document.getElementById("nav");
-menuBtn?.addEventListener("click", () => nav.classList.toggle("open"));
+const setMenuOpen = (open) => {
+  nav?.classList.toggle("open", open);
+  menuBtn?.setAttribute("aria-expanded", open ? "true" : "false");
+  menuBtn?.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+};
+menuBtn?.addEventListener("click", () => {
+  setMenuOpen(!nav?.classList.contains("open"));
+});
 nav?.querySelectorAll("a").forEach((a) => {
-  a.addEventListener("click", () => nav.classList.remove("open"));
+  a.addEventListener("click", () => setMenuOpen(false));
 });
 
 const habitApp = document.getElementById("habitApp");

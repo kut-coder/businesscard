@@ -74,12 +74,40 @@ input, textarea, select { max-width: 100%; }
 }
 .menu-btn {
   display: none;
-  position: absolute;
-  right: 16px;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
   background: transparent;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 8px 10px;
+  border: 0;
+  border-radius: 12px;
+  color: var(--ink);
+}
+.menu-btn:hover { background: rgba(28, 25, 20, 0.05); }
+.menu-btn-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 20px;
+}
+.menu-btn-icon span {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.menu-btn[aria-expanded="true"] .menu-btn-icon span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.menu-btn[aria-expanded="true"] .menu-btn-icon span:nth-child(2) {
+  opacity: 0;
+}
+.menu-btn[aria-expanded="true"] .menu-btn-icon span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 .hero { padding: 72px 0 88px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
@@ -768,21 +796,32 @@ input, textarea, select { max-width: 100%; }
   .wrap { width: calc(100% - 32px); }
   .site-header {
     flex-wrap: wrap;
-    justify-content: flex-end;
-    padding: 12px 16px;
-    gap: 8px;
-    min-height: 52px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 8px 12px;
+    min-height: 56px;
   }
-  .nav, .header-cta { display: none; }
+  .menu-btn { display: inline-flex; order: 1; }
+  .header-cta {
+    display: inline-flex;
+    position: static;
+    order: 2;
+    padding: 9px 14px;
+    font-size: 0.82rem;
+  }
+  .nav {
+    display: none;
+    order: 3;
+  }
   .nav.open {
     display: flex;
     flex-direction: column;
     width: 100%;
-    order: 3;
-    padding: 12px 0 8px;
+    padding: 10px 0 6px;
     gap: 14px;
+    border-top: 1px solid var(--line);
   }
-  .menu-btn { display: block; }
   .hero {
     grid-template-columns: 1fr;
     padding: 40px 0 28px;
