@@ -190,7 +190,7 @@ input, textarea, select { max-width: 100%; }
 }
 .muted { color: var(--ink-soft); }
 
-.service-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.service-nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 .service-nav a {
   background: var(--paper);
   border: 1px solid var(--line);
@@ -445,6 +445,8 @@ input, textarea, select { max-width: 100%; }
 .finance-row .pending { color: #8a6a1a; font-weight: 600; }
 
 .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.material-studio { margin-bottom: 18px; }
+.tools-pair { margin-top: 0; }
 .tool { border-radius: 22px; padding: 22px; }
 .tool h3 { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; margin-bottom: 8px; }
 .tool-label { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; margin: 14px 0 8px; }
@@ -1188,7 +1190,10 @@ input, textarea, select { max-width: 100%; }
 }
 .ms-field textarea { min-height: 78px; line-height: 1.45; }
 .ms-field textarea.ms-compact { min-height: 64px; }
-.ms-tip { margin-top: 16px; }
+.ms-tip {
+  margin-top: 16px;
+  font-size: calc(1em - 3pt);
+}
 .ms-preview-head {
   display: flex;
   align-items: flex-start;
