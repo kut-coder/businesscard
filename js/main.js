@@ -385,6 +385,122 @@ function renderChat(key) {
 }
 if (chatLog) renderChat("start");
 
+const materialStudio = document.getElementById("materialStudio");
+if (materialStudio) {
+  const MS_DATA = {
+    recipe: {
+      fields: [
+        ["title", "Название рецепта", "Тёплая тарелка с киноа"],
+        ["subtitle", "Короткое описание", "Сытный обед, который удобно собрать заранее"],
+        ["ingredients", "Ингредиенты", "киноа — 70 г\nтыква — 180 г\nнут — 100 г\nшпинат — горсть\nтахини — 1 ст. л."],
+        ["steps", "Как приготовить", "Запеките тыкву до мягкости. Сварите киноа. Соберите всё в тарелке, добавьте нут и зелень. Полейте соусом из тахини."],
+        ["note", "Комментарий специалиста", "Если хочется больше сытости — добавьте яйцо или порцию рыбы."],
+      ],
+    },
+    guide: {
+      fields: [
+        ["title", "Название гайда", "Еда без гонки"],
+        ["subtitle", "Подзаголовок", "Три опоры, которые помогают сделать питание устойчивее"],
+        ["block1", "Блок 1", "Начните с регулярности\nНе ищите идеальный рацион. Сначала верните предсказуемые приёмы пищи."],
+        ["block2", "Блок 2", "Собирайте тарелку\nДобавляйте источник белка, овощи, сложные углеводы и жиры."],
+        ["block3", "Блок 3", "Оставляйте место жизни\nПитание должно выдерживать работу, поездки и семейные ужины."],
+      ],
+    },
+    checklist: {
+      fields: [
+        ["title", "Название чек-листа", "Гигиена сна"],
+        ["subtitle", "Короткая подсказка", "Отметьте вечером то, что уже получилось — без перфекционизма"],
+        [
+          "items",
+          "Пункты — каждый с новой строки",
+          "Лёг ужинать за 2–3 часа до сна\nВыключил яркие экраны за 30–40 минут\nПроветрил комнату и приглушил свет\nВыпил воды днём, а не литрами на ночь\nПриготовил одежду и мелочи на утро\nЛёг примерно в одно и то же время\nЕсли не спится — встал и сделал что-то тихое без телефона",
+        ],
+        ["note", "Нижняя заметка", "Сон — такая же опора, как еда. Один спокойный вечер уже меняет самочувствие."],
+      ],
+    },
+  };
+
+  let msType = "recipe";
+  const msState = {};
+  Object.keys(MS_DATA).forEach((type) => {
+    msState[type] = {};
+    MS_DATA[type].fields.forEach(([key, , value]) => {
+      msState[type][key] = value;
+    });
+  });
+
+  const msFields = document.getElementById("msFields");
+  const msLayer = document.getElementById("msDocumentLayer");
+
+  function msEscape(str = "") {
+    return String(str).replace(/[&<>'"]/g, (s) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#039;", '"': "&quot;" }[s])
+    );
+  }
+
+  function msBuildFields() {
+    msFields.innerHTML = "";
+    MS_DATA[msType].fields.forEach(([key, label]) => {
+      const wrap = document.createElement("div");
+      wrap.className = "ms-field";
+      const val = msState[msType][key];
+      const long = ["ingredients", "steps", "note", "block1", "block2", "block3", "items"].includes(key);
+      wrap.innerHTML = long
+        ? `<label>${label}<span>${val.length} зн.</span></label><textarea data-key="${key}" class="${key === "note" ? "ms-compact" : ""}">${msEscape(val)}</textarea>`
+        : `<label>${label}<span>${val.length} зн.</span></label><input data-key="${key}" value="${msEscape(val)}" />`;
+      msFields.appendChild(wrap);
+    });
+    msFields.querySelectorAll("input,textarea").forEach((el) => {
+      el.addEventListener("input", (e) => {
+        msState[msType][e.target.dataset.key] = e.target.value;
+        const counter = e.target.previousElementSibling?.querySelector("span");
+        if (counter) counter.textContent = e.target.value.length + " зн.";
+        msRenderPreview();
+      });
+    });
+  }
+
+  function msRenderPreview() {
+    const s = msState[msType];
+    msLayer.className = "ms-document-layer " + msType;
+    if (msType === "recipe") {
+      const items = s.ingredients
+        .split(/\n+/)
+        .filter(Boolean)
+        .map((x) => `<li>${msEscape(x)}</li>`)
+        .join("");
+      msLayer.innerHTML = `<div class="ms-doc-kicker">карточка рецепта</div><h2 class="ms-doc-title">${msEscape(s.title)}</h2><div class="ms-doc-subtitle">${msEscape(s.subtitle)}</div><div class="ms-rule"></div><div class="ms-two-col"><div><div class="ms-doc-section-title">ингредиенты</div><ul class="ms-ingredients">${items}</ul></div><div><div class="ms-doc-section-title">приготовление</div><div class="ms-doc-text">${msEscape(s.steps)}</div></div></div><div class="ms-recipe-note">${msEscape(s.note)}</div><div class="ms-doc-footer"><span>бережное питание · без жёстких правил</span><strong>@maria.health</strong></div>`;
+    } else if (msType === "guide") {
+      const cards = ["block1", "block2", "block3"]
+        .map((k, i) => {
+          const [head, ...rest] = s[k].split("\n");
+          return `<div class="ms-guide-card"><div class="ms-guide-number">0${i + 1}</div><strong>${msEscape(head)}</strong><p>${msEscape(rest.join("\n"))}</p></div>`;
+        })
+        .join("");
+      msLayer.innerHTML = `<div class="ms-doc-kicker">мини-гайд</div><h2 class="ms-doc-title">${msEscape(s.title)}</h2><div class="ms-doc-subtitle">${msEscape(s.subtitle)}</div><div class="ms-guide-blocks">${cards}</div><div class="ms-doc-footer"><span>сохраните, чтобы вернуться позже</span><strong>@maria.health</strong></div>`;
+    } else {
+      const items = s.items
+        .split(/\n+/)
+        .filter(Boolean)
+        .map((x) => `<div class="ms-check-item"><span class="ms-check"></span><span>${msEscape(x)}</span></div>`)
+        .join("");
+      msLayer.innerHTML = `<div class="ms-doc-kicker">чек-лист</div><h2 class="ms-doc-title">${msEscape(s.title)}</h2><div class="ms-doc-subtitle">${msEscape(s.subtitle)}</div><div class="ms-rule"></div><div class="ms-checklist-items">${items}</div><div class="ms-recipe-note">${msEscape(s.note)}</div><div class="ms-doc-footer"><span>простые решения для обычной недели</span><strong>@maria.health</strong></div>`;
+    }
+  }
+
+  materialStudio.querySelectorAll(".ms-format-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      msType = btn.dataset.type;
+      materialStudio.querySelectorAll(".ms-format-btn").forEach((x) => x.classList.toggle("active", x === btn));
+      msBuildFields();
+      msRenderPreview();
+    });
+  });
+
+  msBuildFields();
+  msRenderPreview();
+}
+
 const toTop = document.getElementById("toTop");
 const toggleToTop = () => {
   toTop?.classList.toggle("visible", window.scrollY > 280);

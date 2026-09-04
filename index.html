@@ -413,34 +413,61 @@
       <div class="section-head">
         <div>
           <p class="kicker">06 · стиль</p>
-          <h2>Гайды, чек-листы, рецепты - в&nbsp;вашей эстетике</h2>
+          <h2>Материалы в вашей подаче — без&nbsp;Canva каждый&nbsp;раз</h2>
         </div>
-        <p class="muted">Оформление материалов в едином стиле: гайды, чек-листы, рецепты.</p>
+        <p class="muted">Визуал настраиваем один раз, вы работаете только с&nbsp;содержанием</p>
       </div>
-      <div class="materials">
-        <article class="mat">
-          <img src="assets/guide-cover.jpg" alt="Обложка авторского гайда" />
-          <div class="mat-body">
-            <h3 style="font-family:var(--font-serif)">Гайд «Еда без гонки»</h3>
-            <p class="muted">Короткий файл для клиента: зачем так есть, что положить в тарелку, что делать, если день пошёл не по плану.</p>
-            <p class="hint">Обложка и текст в вашем тоне.</p>
+      <p class="hint material-studio-hint">Выберите формат и напишите текст.</p>
+
+      <div class="material-studio" id="materialStudio">
+        <div class="ms-workspace">
+          <div class="ms-controls">
+            <div class="ms-step">шаг 1</div>
+            <div class="ms-section-title">Ваш фирменный фон</div>
+            <div class="ms-upload">
+              <div class="ms-upload-meta">
+                <strong id="msFileTitle">Демо-фон специалиста</strong>
+                <span id="msFileHint">в полной версии можно загрузить свой шаблон</span>
+              </div>
+              <button type="button" class="ms-soft-btn" disabled title="Доступно в полной версии">Загрузить свой</button>
+            </div>
+
+            <div class="ms-step">шаг 2</div>
+            <div class="ms-section-title">Что создаём?</div>
+            <div class="ms-formats" role="group" aria-label="Формат материала">
+              <button type="button" class="ms-format-btn active" data-type="recipe">Рецепт</button>
+              <button type="button" class="ms-format-btn" data-type="guide">Гайд</button>
+              <button type="button" class="ms-format-btn" data-type="checklist">Чек-лист</button>
+            </div>
+
+            <div class="ms-step">шаг 3</div>
+            <div class="ms-section-title">Добавьте свой текст</div>
+            <div id="msFields" class="ms-fields"></div>
+            <p class="hint ms-tip">Пишите прямо здесь — превью справа меняется сразу. В реальном инструменте структура и поля настраиваются под ваш способ работы.</p>
           </div>
-        </article>
-        <article class="mat">
-          <img src="assets/checklist-print.jpg" alt="Печатный чек-лист" />
-          <div class="mat-body">
-            <h3 style="font-family:var(--font-serif)">Чек-лист закупки</h3>
-            <p class="muted">Одна страница в корзину телефона: что взять на 2–3 дня, что можно заменить в магазине и что купить заранее.</p>
+
+          <div class="ms-preview-side">
+            <div class="ms-preview-head">
+              <div>
+                <div class="ms-step">шаг 4</div>
+                <h3>Готовый материал</h3>
+              </div>
+              <div class="ms-live">обновляется автоматически</div>
+            </div>
+            <div class="ms-paper-wrap">
+              <div id="msPaper" class="ms-paper">
+                <div class="ms-default-bg"></div>
+                <div class="ms-leaf" aria-hidden="true"><span></span><span></span><span></span></div>
+                <div class="ms-doc-logo">Мария Светлова · нутрициолог</div>
+                <div id="msDocumentLayer" class="ms-document-layer recipe"></div>
+              </div>
+            </div>
+            <div class="ms-export-row">
+              <button type="button" class="ms-export-btn" disabled title="Пример кнопки в полной версии">Скачать JPG</button>
+              <button type="button" class="ms-export-btn ms-export-btn--primary" disabled title="Пример кнопки в полной версии">Сохранить PDF</button>
+            </div>
           </div>
-        </article>
-        <article class="mat">
-          <img src="assets/recipe-bowl.jpg" alt="Рецепт: тарелка с киноа и тыквой" />
-          <div class="mat-body">
-            <h3 style="font-family:var(--font-serif)">Карточка рецепта</h3>
-            <p><strong>Тыква, киноа, тахини</strong></p>
-            <p class="muted">Фото, время и порции на одной карточке. Можно отправить в чат клиенту - выглядит как ваш материал, а не случайная картинка из поиска.</p>
-          </div>
-        </article>
+        </div>
       </div>
     </section>
 
