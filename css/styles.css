@@ -1119,7 +1119,7 @@ input, textarea, select { max-width: 100%; }
 }
 .ms-section-title {
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.35rem;
   font-weight: 500;
   line-height: 1.15;
   margin-bottom: 16px;
@@ -1192,6 +1192,7 @@ input, textarea, select { max-width: 100%; }
   color: var(--ink);
   outline: none;
   resize: vertical;
+  font-size: calc(1em - 2pt);
 }
 .ms-field input:focus,
 .ms-field textarea:focus {
@@ -1214,7 +1215,7 @@ input, textarea, select { max-width: 100%; }
 }
 .ms-preview-head h3 {
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.35rem;
   font-weight: 500;
   margin: 2px 0 0;
 }
