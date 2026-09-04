@@ -96,7 +96,7 @@ input, textarea, select { max-width: 100%; }
 .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--clay); }
 .hero h1 {
   font-family: var(--font-serif);
-  font-size: clamp(calc(1.85rem - 2pt), calc(4.6vw - 2pt), calc(4.4rem - 2pt));
+  font-size: clamp(calc(1.85rem - 4pt), calc(4.6vw - 4pt), calc(4.4rem - 4pt));
   font-weight: 500;
   font-style: italic;
   line-height: 1.12;
@@ -105,7 +105,12 @@ input, textarea, select { max-width: 100%; }
   overflow-wrap: anywhere;
 }
 .hero-h1-line {
+  display: block;
+  margin-top: 0.28em;
   font-size: calc(1em - 3pt);
+  font-weight: 400;
+  color: var(--clay-deep);
+  letter-spacing: -0.02em;
 }
 .lead { font-size: 1.12rem; color: var(--ink-soft); max-width: 48ch; margin-top: 12px; }
 .hero-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
@@ -894,7 +899,7 @@ input, textarea, select { max-width: 100%; }
 }
 
 @media (max-width: 400px) {
-  .hero h1 { font-size: calc(1.65rem - 2pt); }
+  .hero h1 { font-size: calc(1.65rem - 4pt); }
   .section h2 { font-size: 1.35rem; }
   .logo { font-size: 0.82rem; }
   .finance-row { grid-template-columns: 1fr; gap: 2px; }
