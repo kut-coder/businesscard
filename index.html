@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Цифровые решения для специалистов сферы здоровья</title>
   <meta name="description" content="Цифровые решения для специалистов сферы здоровья: сайты, сервисы и мини-приложения на языке вашей профессии." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="fonts/manrope-cyrillic-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/manrope-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/fraunces-italic-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/literata-cyrillic-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/literata-cyrillic-500-italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/fonts.css" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -44,7 +48,7 @@
         </div>
       </div>
       <div class="hero-visual">
-        <img src="assets/hero-photo.png" alt="Ксения за работой за ноутбуком" />
+        <img src="assets/hero-photo.jpg" alt="Ксения за работой за ноутбуком" width="800" height="1000" loading="eager" decoding="async" />
         <aside class="hero-card">
           <small>не шаблон из браузера</small>
           <strong>Ваш сценарий. Ваш тон. Ваш контроль.</strong>
@@ -198,7 +202,7 @@
             <div class="preview-window" tabindex="0">
               <article class="mini-a">
                 <div class="mini-hero">
-                  <p style="letter-spacing:.12em;text-transform:uppercase;font-size:.72rem">Консультант · женское здоровье</p>
+                  <p class="mini-role">Консультант · женское здоровье</p>
                   <h4>Мария Светлова</h4>
                   <p>Тихая сила: циклы, энергия, еда без войны с собой.</p>
                 </div>
@@ -302,7 +306,7 @@
         </aside>
         <div class="crm-main">
           <div class="crm-view active" id="crm-clients">
-            <h3 style="font-family:var(--font-serif);margin-bottom:12px">Ведение</h3>
+            <h3 class="crm-view-title">Ведение</h3>
             <div class="table-wrap">
             <table class="table">
               <thead><tr><th>Клиент</th><th>Запрос</th><th>Статус</th><th>След. сессия</th></tr></thead>
@@ -316,7 +320,7 @@
             </div>
           </div>
           <div class="crm-view" id="crm-finance">
-            <h3 style="font-family:var(--font-serif);margin-bottom:14px">Август · касса</h3>
+            <h3 class="crm-view-title">Август · касса</h3>
             <div class="finance-grid">
               <div class="finance-card in">
                 <span>Приход</span>
@@ -347,11 +351,11 @@
             </div>
           </div>
           <div class="crm-view" id="crm-today">
-            <h3 style="font-family:var(--font-serif);margin-bottom:10px">Слоты на сегодня</h3>
+            <h3 class="crm-view-title">Слоты на сегодня</h3>
             <p>11:00 — Анна К., разбор анализов</p>
             <p>14:30 — свободный слот (можно отдать боту)</p>
             <p>18:00 — Игорь П., коррекция рациона</p>
-            <p class="hint" style="margin-top:12px">Напоминания уходят из этой же карточки в любой удобный для вас мессенджер.</p>
+            <p class="hint crm-today-hint">Напоминания уходят из этой же карточки в любой удобный для вас мессенджер.</p>
           </div>
         </div>
       </div>
@@ -428,7 +432,7 @@
     <section class="wrap section">
       <div class="principle">
         <div>
-          <p class="kicker" style="color:#e8c9b8">принцип</p>
+          <p class="kicker kicker--on-dark">принцип</p>
           <h2>Не то, что выдаёт поиск или нейросеть «в&nbsp;общем»</h2>
           <p>Подача под вашим контролем: формулировки, границы компетенции, визуальный код. Я собираю каркас и логику, вы остаётесь автором смысла.</p>
         </div>
