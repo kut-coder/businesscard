@@ -18,10 +18,43 @@ if (habitApp) {
   const markBtn = document.getElementById("habitDone");
   const resetBtn = document.getElementById("habitReset");
   const ringLen = 2 * Math.PI * 15.5;
-  let doneDays = 1;
+  let doneDays = 0;
+  const habitCheer = [
+    "Отлично",
+    "Супер",
+    "Так держать",
+    "Классно",
+    "Молодец",
+    "Есть!",
+    "Сильный шаг",
+    "Красиво",
+    "В ритме",
+    "Здорово",
+    "Уверенно",
+    "Огонь",
+    "Продолжаем",
+    "Браво",
+    "Замечено",
+    "Ты в деле",
+    "Чётко",
+    "Важный день",
+    "Почти финиш",
+    "Финишная прямая",
+  ];
 
   function weekStart(day) {
     return Math.floor((day - 1) / 7) * 7 + 1;
+  }
+
+  function habitStatusText(done, current) {
+    if (done <= 0) {
+      return "Сейчас идёт день 1 из 21.";
+    }
+    if (done >= TOTAL) {
+      return "21 день пройден. Можно начать новый круг.";
+    }
+    const cheer = habitCheer[done - 1] || "Отлично";
+    return `${cheer}: день ${done} отмечен. Сейчас идёт день ${current} из 21.`;
   }
 
   function renderHabit() {
@@ -54,12 +87,12 @@ if (habitApp) {
     ringFg.style.strokeDasharray = `${ringLen}`;
     ringFg.style.strokeDashoffset = String(ringLen - (doneDays / TOTAL) * ringLen);
 
+    statusEl.textContent = habitStatusText(doneDays, current);
+
     if (doneDays >= TOTAL) {
-      statusEl.textContent = "21 день пройден. Можно начать новый круг.";
       markBtn.disabled = true;
       markBtn.textContent = "Готово";
     } else {
-      statusEl.textContent = `Отлично: день ${doneDays} отмечен. Сейчас идёт день ${current} из 21.`;
       markBtn.disabled = false;
       markBtn.textContent = "Отметить день";
     }
