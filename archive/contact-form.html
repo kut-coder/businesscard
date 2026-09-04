@@ -1,0 +1,24 @@
+<!--
+  Временно убрана с главной (секция #contact).
+  Чтобы вернуть:
+  1. В index.html в #contact замените блок .contact-messengers-block
+     на форму ниже (рядом с заголовком, в сетке .contact).
+  2. Верните обработчик submit из archive/contact-form.js
+     в конец js/main.js (или подключите этот файл).
+-->
+<form class="form tool" id="contactForm">
+  <label class="field">Имя<input name="name" required placeholder="Как к вам обращаться" /></label>
+  <label class="field">Контакт<input name="contact" required placeholder="Мессенджер/почта" /></label>
+  <label class="field">Что ближе
+    <select name="type">
+      <option>Веб-сервис</option>
+      <option>Сайт / школа</option>
+      <option>CRM</option>
+      <option>Приложение</option>
+      <option>Пока не знаю - помогите выбрать</option>
+    </select>
+  </label>
+  <label class="field">Задача<textarea name="task" rows="4" placeholder="Где болит и для кого"></textarea></label>
+  <button class="btn btn-primary" type="submit">Отправить</button>
+  <p class="toast" id="toast">Спасибо. Ваш запрос отправлен специалисту.<br />В ближайшее время Ксения с вами свяжется.</p>
+</form>

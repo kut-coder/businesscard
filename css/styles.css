@@ -704,6 +704,41 @@ input, textarea, select { max-width: 100%; }
 .compare div { background: rgba(255,255,255,0.06); border-radius: 14px; padding: 14px; }
 
 .contact { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 28px; }
+.contact--direct { align-items: start; }
+.contact-invite {
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  max-width: 36ch;
+  line-height: 1.45;
+  margin-bottom: 18px;
+}
+.contact-messengers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.contact-messenger {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.9rem;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.contact-messenger svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.contact-messenger:hover {
+  background: var(--ink);
+  border-color: transparent;
+  color: var(--paper);
+}
 .form { display: grid; gap: 12px; }
 .form input, .form textarea, .form select { width: 100%; }
 .note { font-size: 0.85rem; opacity: 0.7; margin-top: 8px; }
