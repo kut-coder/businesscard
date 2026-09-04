@@ -511,10 +511,37 @@ toTop?.addEventListener("click", () => {
 window.addEventListener("scroll", toggleToTop, { passive: true });
 toggleToTop();
 
-document.getElementById("contactForm")?.addEventListener("submit", (e) => {
+document.getElementById("contactForm")?.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const data = Object.fromEntries(new FormData(e.target).entries());
-  localStorage.setItem("nutricode-lead", JSON.stringify(data));
-  document.getElementById("toast").style.display = "block";
-  e.target.reset();
+  const form = e.target;
+  const toast = document.getElementById("toast");
+  const submitBtn = form.querySelector('[type="submit"]');
+  const data = Object.fromEntries(new FormData(form).entries());
+  const defaultToast = "Спасибо. Ваш запрос отправлен специалисту. В ближайшее время Ксения с вами свяжется.";
+
+  submitBtn.disabled = true;
+  try {
+    const res = await fetch("https://formsubmit.co/ajax/k.utorina@yandex.ru", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        ...data,
+        _subject: "Заявка с сайта-визитки",
+        _template: "table",
+      }),
+    });
+    if (!res.ok) throw new Error("send failed");
+    localStorage.setItem("nutricode-lead", JSON.stringify(data));
+    toast.textContent = defaultToast;
+    toast.style.display = "block";
+    form.reset();
+  } catch {
+    toast.textContent = "Не удалось отправить автоматически. Напишите напрямую: k.utorina@yandex.ru";
+    toast.style.display = "block";
+  } finally {
+    submitBtn.disabled = false;
+  }
 });
