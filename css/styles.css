@@ -126,12 +126,12 @@ input, textarea, select { max-width: 100%; }
 }
 .hero-card {
   position: absolute;
-  right: 18px;
-  bottom: 18px;
-  width: min(250px, calc(100% - 36px));
+  right: 0;
+  bottom: 0;
+  width: min(220px, calc(100% - 48px));
   background: var(--paper);
   padding: 14px 16px;
-  border-radius: 18px;
+  border-radius: 18px 0 12px 0;
   box-shadow: var(--shadow);
   font-style: italic;
 }
@@ -696,10 +696,11 @@ input, textarea, select { max-width: 100%; }
   .hero-visual img { height: 280px; border-radius: 24px 10px 24px 10px; }
   .hero-card {
     position: absolute;
-    right: 10px;
-    bottom: 10px;
-    width: min(210px, calc(100% - 20px));
+    right: 0;
+    bottom: 0;
+    width: min(190px, calc(100% - 28px));
     padding: 12px;
+    border-radius: 16px 0 10px 0;
   }
   .hero-card strong { font-size: 1rem; }
   .hero-card p { font-size: 0.8rem; }
