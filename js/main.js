@@ -5,26 +5,80 @@ nav?.querySelectorAll("a").forEach((a) => {
   a.addEventListener("click", () => nav.classList.remove("open"));
 });
 
-const dots = document.getElementById("habitDots");
-if (dots) {
-  for (let i = 1; i <= 21; i += 1) {
-    const b = document.createElement("button");
-    b.className = "dot" + (i < 7 ? " done" : i === 7 ? " today" : "");
-    b.type = "button";
-    b.title = "День " + i;
-    dots.appendChild(b);
+const habitApp = document.getElementById("habitApp");
+if (habitApp) {
+  const TOTAL = 21;
+  const daysEl = document.getElementById("habitDays");
+  const ringFg = document.getElementById("habitRingFg");
+  const pctEl = document.getElementById("habitPct");
+  const doneEl = document.getElementById("habitDoneCount");
+  const openEl = document.getElementById("habitOpenCount");
+  const statusEl = document.getElementById("habitStatus");
+  const weekEl = document.getElementById("habitWeekLabel");
+  const markBtn = document.getElementById("habitDone");
+  const resetBtn = document.getElementById("habitReset");
+  const ringLen = 2 * Math.PI * 15.5;
+  let doneDays = 1;
+
+  function weekStart(day) {
+    return Math.floor((day - 1) / 7) * 7 + 1;
   }
+
+  function renderHabit() {
+    const current = Math.min(doneDays + 1, TOTAL);
+    const start = weekStart(Math.min(current, TOTAL));
+    const end = Math.min(start + 6, TOTAL);
+    const weekNum = Math.floor((start - 1) / 7) + 1;
+    weekEl.textContent = `Неделя ${weekNum} · дни ${start}–${end}`;
+    daysEl.innerHTML = "";
+
+    for (let i = start; i <= end; i += 1) {
+      const cell = document.createElement("button");
+      cell.type = "button";
+      cell.className = "habit-day";
+      if (i <= doneDays) cell.classList.add("is-done");
+      else if (i === current && doneDays < TOTAL) cell.classList.add("is-today");
+      else cell.classList.add("is-locked");
+      cell.innerHTML = `<span class="habit-day-num">${i}</span><span class="habit-day-mark">${i <= doneDays ? "✓" : i === current ? "·" : ""}</span>`;
+      cell.title = "День " + i;
+      if (i === current && doneDays < TOTAL) {
+        cell.addEventListener("click", markDay);
+      }
+      daysEl.appendChild(cell);
+    }
+
+    const pct = Math.round((doneDays / TOTAL) * 100);
+    pctEl.textContent = pct + "%";
+    doneEl.textContent = String(doneDays);
+    openEl.textContent = String(Math.min(1, TOTAL - doneDays));
+    ringFg.style.strokeDasharray = `${ringLen}`;
+    ringFg.style.strokeDashoffset = String(ringLen - (doneDays / TOTAL) * ringLen);
+
+    if (doneDays >= TOTAL) {
+      statusEl.textContent = "21 день пройден. Можно начать новый круг.";
+      markBtn.disabled = true;
+      markBtn.textContent = "Готово";
+    } else {
+      statusEl.textContent = `Отлично: день ${doneDays} отмечен. Сейчас идёт день ${current} из 21.`;
+      markBtn.disabled = false;
+      markBtn.textContent = "Отметить день";
+    }
+  }
+
+  function markDay() {
+    if (doneDays >= TOTAL) return;
+    doneDays += 1;
+    renderHabit();
+  }
+
+  markBtn?.addEventListener("click", markDay);
+  resetBtn?.addEventListener("click", () => {
+    doneDays = 0;
+    renderHabit();
+  });
+
+  renderHabit();
 }
-document.getElementById("habitDone")?.addEventListener("click", (e) => {
-  const today = document.querySelector(".dot.today");
-  if (today) {
-    today.classList.remove("today");
-    today.classList.add("done");
-    const next = today.nextElementSibling;
-    if (next) next.classList.add("today");
-  }
-  e.target.textContent = "День отмечен. До завтра — без долга.";
-});
 
 document.querySelectorAll("[data-crm]").forEach((btn) => {
   btn.addEventListener("click", () => {

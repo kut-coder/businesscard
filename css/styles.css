@@ -796,11 +796,256 @@ input, textarea, select { max-width: 100%; }
   .quick button { font-size: 0.72rem; padding: 6px 8px; }
 }
 
+.phone-screen--habit {
+  padding: 0;
+  background: #f7f4f8;
+}
+
 .phone-screen--vitaminki {
   padding: 0;
   min-height: 540px;
   background: #fff8f1;
   overflow: hidden;
+}
+
+.habit-app {
+  --habit-ink: #4a3b4d;
+  --habit-muted: #8a7a8c;
+  --habit-soft: #f4ebf0;
+  --habit-card: #f3eef3;
+  --habit-ok: #dceee3;
+  --habit-ok-ink: #3d6b52;
+  --habit-ok-line: #8fbf9f;
+  min-height: 540px;
+  padding: 16px 14px 14px;
+  color: var(--habit-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.habit-app-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.habit-brand {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.habit-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #e5dbe3;
+  color: var(--habit-muted);
+}
+
+.habit-tag {
+  margin: 4px 0 0;
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--habit-ink);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.habit-name {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  font-weight: 800;
+  color: var(--habit-ink);
+}
+
+.habit-summary {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 10px;
+  align-items: center;
+  background: #fff;
+  border-radius: 18px;
+  padding: 12px;
+  border: 1px solid #ebe3ea;
+}
+
+.habit-ring {
+  position: relative;
+  width: 88px;
+  height: 88px;
+}
+
+.habit-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.habit-ring-bg {
+  fill: none;
+  stroke: #e8e0e7;
+  stroke-width: 3.2;
+}
+
+.habit-ring-fg {
+  fill: none;
+  stroke: var(--habit-ink);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s ease;
+}
+
+.habit-ring-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.habit-ring-label strong {
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.habit-ring-label span {
+  font-size: 0.62rem;
+  color: var(--habit-muted);
+}
+
+.habit-stats {
+  display: grid;
+  gap: 6px;
+}
+
+.habit-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background: var(--habit-card);
+  border-radius: 10px;
+  padding: 7px 10px;
+  font-size: 0.72rem;
+  color: var(--habit-muted);
+}
+
+.habit-stat strong {
+  color: var(--habit-ink);
+  font-size: 0.9rem;
+}
+
+.habit-week-head {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--habit-muted);
+  margin-top: 2px;
+}
+
+.habit-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.habit-day {
+  appearance: none;
+  border: 1.5px solid #e5dbe3;
+  background: #fff;
+  border-radius: 12px;
+  min-height: 58px;
+  padding: 6px 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: default;
+  color: var(--habit-muted);
+}
+
+.habit-day-num {
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.habit-day-mark {
+  font-size: 0.72rem;
+  line-height: 1;
+  min-height: 0.9em;
+}
+
+.habit-day.is-done {
+  background: var(--habit-ok);
+  border-color: var(--habit-ok-line);
+  color: var(--habit-ok-ink);
+}
+
+.habit-day.is-today {
+  border-color: var(--habit-ink);
+  color: var(--habit-ink);
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(74, 59, 77, 0.12);
+}
+
+.habit-day.is-locked {
+  opacity: 0.72;
+  background: #faf7fa;
+}
+
+.habit-status {
+  margin: 2px 0 0;
+  background: var(--habit-soft);
+  color: var(--habit-ink);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.74rem;
+  line-height: 1.35;
+}
+
+.habit-actions {
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.habit-btn {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 14px;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.habit-btn-mark {
+  background: var(--habit-ink);
+  color: #fff;
+}
+
+.habit-btn-mark:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.habit-btn-reset {
+  background: var(--habit-soft);
+  color: var(--habit-ink);
 }
 
 .vitaminki-iframe {

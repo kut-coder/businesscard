@@ -94,7 +94,7 @@
           <p class="kicker">01 · мини-приложение</p>
           <h2>Учит мягко, ведёт к&nbsp;записи.</h2>
         </div>
-        <p class="muted">Два характера: игра «Витаминки» для ребёнка и родителя и спокойный 21-дневный ритм. Оба заканчиваются тёплым приглашением на консультацию.</p>
+        <p class="muted">Два характера: игра «Витаминки» и трекер привычки на 21 день. Оба заканчиваются тёплым приглашением на консультацию.</p>
       </div>
       <div class="block phones">
         <div class="phone-col">
@@ -112,17 +112,43 @@
           </div>
         </div>
         <div class="phone-col">
-          <h3>21 день мягкого ритма</h3>
-          <p>Тихое сопровождение: один ритуал в день, без калорийного стыда и «срывов».</p>
-          <div class="phone" aria-label="Демо приложения 21 день">
-            <div class="phone-screen">
-              <div class="app-screen active" data-app="habit" data-step="0">
-                <div class="app-top"><span>день 7</span><span>серия 6</span></div>
-                <img src="assets/app-calm.jpg" alt="" style="height:120px;width:100%;object-fit:cover;border-radius:16px;margin-bottom:12px" />
-                <p class="app-title">Сегодня: тёплая тарелка до 21:00</p>
-                <p>Не идеально. Достаточно. Отметьте, если получилось хотя бы на 70%.</p>
-                <div class="dots" id="habitDots"></div>
-                <button class="app-cta" id="habitDone">Отметить день</button>
+          <h3>Трекер привычки</h3>
+          <p>21 день практики: одна привычка, один шаг в день — без гонки и «срывов».</p>
+          <div class="phone" aria-label="Демо трекера привычки">
+            <div class="phone-screen phone-screen--habit">
+              <div class="habit-app" id="habitApp">
+                <div class="habit-app-top">
+                  <span class="habit-brand">Трекер привычки</span>
+                  <span class="habit-badge">21 день</span>
+                </div>
+                <p class="habit-tag">Текущая привычка</p>
+                <h4 class="habit-name">Пить стакан воды утром</h4>
+                <div class="habit-summary">
+                  <div class="habit-ring" aria-hidden="true">
+                    <svg viewBox="0 0 36 36">
+                      <circle class="habit-ring-bg" cx="18" cy="18" r="15.5"></circle>
+                      <circle class="habit-ring-fg" id="habitRingFg" cx="18" cy="18" r="15.5"></circle>
+                    </svg>
+                    <div class="habit-ring-label">
+                      <strong id="habitPct">5%</strong>
+                      <span>готово</span>
+                    </div>
+                  </div>
+                  <div class="habit-stats">
+                    <div class="habit-stat"><span>Выполнено</span><strong id="habitDoneCount">1</strong></div>
+                    <div class="habit-stat"><span>Доступно</span><strong id="habitOpenCount">1</strong></div>
+                    <div class="habit-stat"><span>Всего</span><strong>21</strong></div>
+                  </div>
+                </div>
+                <div class="habit-week-head">
+                  <span id="habitWeekLabel">Неделя 1 · дни 1–7</span>
+                </div>
+                <div class="habit-days" id="habitDays"></div>
+                <p class="habit-status" id="habitStatus">Отлично: день 1 отмечен. Сейчас идёт день 1 из 21.</p>
+                <div class="habit-actions">
+                  <button type="button" class="habit-btn habit-btn-mark" id="habitDone">Отметить день</button>
+                  <button type="button" class="habit-btn habit-btn-reset" id="habitReset">Начать заново</button>
+                </div>
               </div>
             </div>
           </div>
