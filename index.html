@@ -436,13 +436,15 @@
       </div>
     </section>
 
-    <section class="wrap section" id="contact">
+    <section class="wrap section" id="contact" data-contact-mode="yandex">
       <div class="contact">
         <div>
           <p class="kicker">следующий шаг</p>
           <h2>Расскажите, что сейчас отнимает время</h2>
         </div>
-        <form class="form tool" id="contactForm">
+
+        <!-- Вернуть прежний вид: data-contact-mode="native" (форма сохранена ниже и в archive/contact-form-native.html) -->
+        <form class="form tool contact-panel contact-panel--native" id="contactForm" hidden>
           <label class="field">Имя<input name="name" required placeholder="Как к вам обращаться" /></label>
           <label class="field">Контакт<input name="contact" required placeholder="Мессенджер/почта" /></label>
           <label class="field">Что ближе
@@ -456,8 +458,20 @@
           </label>
           <label class="field">Задача<textarea name="task" rows="4" placeholder="Где болит и для кого"></textarea></label>
           <button class="btn btn-primary" type="submit">Отправить</button>
-          <p class="toast" id="toast">Спасибо. Ваш запрос отправлен специалисту. В ближайшее время Ксения с вами свяжется.</p>
+          <p class="toast" id="toast">Спасибо. Ваш запрос отправлен специалисту.<br />В ближайшее время Ксения с вами свяжется.</p>
         </form>
+
+        <div class="tool contact-panel contact-panel--yandex" id="yandexFormPanel">
+          <iframe
+            class="yandex-form-frame"
+            title="Форма заявки"
+            name="ya-form-6a9b004a068ff08749ba0aa5"
+            src="https://forms.yandex.ru/u/6a9b004a068ff08749ba0aa5?iframe=1"
+            data-yandex-form-src="https://forms.yandex.ru/u/6a9b004a068ff08749ba0aa5?iframe=1"
+            frameborder="0"
+            loading="lazy"
+          ></iframe>
+        </div>
       </div>
     </section>
   </main>
@@ -497,6 +511,7 @@
     <span aria-hidden="true">↑</span>
     <span>наверх</span>
   </button>
+  <script src="https://forms.yandex.ru/_static/embed.js" defer></script>
   <script src="js/main.js"></script>
 </body>
 </html>

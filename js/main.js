@@ -517,7 +517,7 @@ document.getElementById("contactForm")?.addEventListener("submit", async (e) => 
   const toast = document.getElementById("toast");
   const submitBtn = form.querySelector('[type="submit"]');
   const data = Object.fromEntries(new FormData(form).entries());
-  const defaultToast = "Спасибо. Ваш запрос отправлен специалисту. В ближайшее время Ксения с вами свяжется.";
+  const defaultToast = "Спасибо. Ваш запрос отправлен специалисту.<br />В ближайшее время Ксения с вами свяжется.";
 
   submitBtn.disabled = true;
   try {
@@ -535,7 +535,7 @@ document.getElementById("contactForm")?.addEventListener("submit", async (e) => 
     });
     if (!res.ok) throw new Error("send failed");
     localStorage.setItem("nutricode-lead", JSON.stringify(data));
-    toast.textContent = defaultToast;
+    toast.innerHTML = defaultToast;
     toast.style.display = "block";
     form.reset();
   } catch {
@@ -545,3 +545,32 @@ document.getElementById("contactForm")?.addEventListener("submit", async (e) => 
     submitBtn.disabled = false;
   }
 });
+
+/* Переключатель формы «Связаться»:
+   data-contact-mode="native"  — текущий вид (FormSubmit, пока включён этот режим)
+   data-contact-mode="yandex"  — Яндекс Форма; ссылку вставьте в data-yandex-form-src у iframe
+   Копия native-формы: archive/contact-form-native.html */
+(() => {
+  const section = document.getElementById("contact");
+  if (!section) return;
+
+  const mode = section.dataset.contactMode === "yandex" ? "yandex" : "native";
+  const nativePanel = section.querySelector(".contact-panel--native");
+  const yandexPanel = section.querySelector(".contact-panel--yandex");
+  const frame = yandexPanel?.querySelector(".yandex-form-frame");
+  const src = (frame?.dataset.yandexFormSrc || frame?.getAttribute("src") || "").trim();
+
+  if (mode === "yandex") {
+    nativePanel?.setAttribute("hidden", "");
+    yandexPanel?.removeAttribute("hidden");
+    if (src) {
+      frame.src = src;
+      yandexPanel.classList.remove("is-pending");
+    } else {
+      yandexPanel.classList.add("is-pending");
+    }
+  } else {
+    yandexPanel?.setAttribute("hidden", "");
+    nativePanel?.removeAttribute("hidden");
+  }
+})();

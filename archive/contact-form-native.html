@@ -1,0 +1,22 @@
+<!--
+  Резервная копия текущей формы блока «Связаться» (режим native).
+  На сайте она уже есть в index.html (#contactForm).
+  Чтобы снова показать её вместо Яндекс Формы:
+  в index.html у секции #contact поставьте data-contact-mode="native"
+-->
+<form class="form tool contact-panel contact-panel--native" id="contactForm">
+  <label class="field">Имя<input name="name" required placeholder="Как к вам обращаться" /></label>
+  <label class="field">Контакт<input name="contact" required placeholder="Мессенджер/почта" /></label>
+  <label class="field">Что ближе
+    <select name="type">
+      <option>Веб-сервис</option>
+      <option>Сайт / школа</option>
+      <option>CRM</option>
+      <option>Приложение</option>
+      <option>Пока не знаю - помогите выбрать</option>
+    </select>
+  </label>
+  <label class="field">Задача<textarea name="task" rows="4" placeholder="Где болит и для кого"></textarea></label>
+  <button class="btn btn-primary" type="submit">Отправить</button>
+  <p class="toast" id="toast">Спасибо. Ваш запрос отправлен специалисту.<br />В ближайшее время Ксения с вами свяжется.</p>
+</form>
