@@ -446,7 +446,18 @@ input, textarea, select { max-width: 100%; }
 
 .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .material-studio { margin-bottom: 18px; }
-.tools-pair { margin-top: 0; }
+.tools-pair { margin-top: 28px; }
+.example-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+.example-label--on-dark { color: #c9b8a4; }
+#tools .example-label { margin-top: 8px; }
+#tools .material-studio-hint { margin-top: 0; }
 .tool { border-radius: 22px; padding: 22px; }
 .tool h3 { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; margin-bottom: 8px; }
 .tool-label { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.6; margin: 14px 0 8px; }
