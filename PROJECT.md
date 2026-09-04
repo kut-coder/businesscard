@@ -40,7 +40,7 @@
 ├── css/
 │   ├── fonts.css              # локальные @font-face
 │   └── styles.css
-├── fonts/                     # локальные woff2: Fraunces, Literata (кириллица), Manrope
+├── fonts/                     # локальные woff2: Source Serif 4 + Manrope
 ├── assets/
 │   ├── hero-photo.jpg         # герой: фото автора
 │   ├── landing-serene.jpg     # фон лендинга специалиста
@@ -82,7 +82,7 @@
 
 ### Шрифты
 
-- Display / заголовки: **Fraunces** + **Literata** для кириллицы (локально, `css/fonts.css`)
+- Display / заголовки: **Source Serif 4** (локально, с кириллицей)
 - Текст UI: **Manrope** (локально, с кириллицей)
 - Google Fonts не используются
 
